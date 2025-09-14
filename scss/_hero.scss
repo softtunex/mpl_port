@@ -1,0 +1,174 @@
+// ==========================================================================
+// Hero Section - Landing Page
+// ==========================================================================
+
+@use "variables";
+@use "mixins";
+
+.hero {
+  min-height: 100vh;
+  @include mixins.flex-center;
+  text-align: center;
+  padding: 8rem 0 4rem;
+}
+
+.hero .container {
+  @include mixins.flex-center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+// Profile Section
+.hero__profile {
+  @include mixins.flex-center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero__avatar {
+  @include mixins.flex-center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+
+  @include mixins.tablet {
+    width: 140px;
+    height: 140px;
+  }
+
+  @include mixins.desktop {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.hero__status {
+  @include mixins.flex-center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba(variables.$status-green, 0.1);
+  border: 1px solid rgba(variables.$status-green, 0.2);
+  border-radius: 50px;
+  backdrop-filter: blur(8px);
+}
+
+.hero__status-indicator {
+  width: 8px;
+  height: 8px;
+  background: variables.$status-green;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero__status-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: variables.$status-green;
+}
+
+// Hero Content
+.hero__content {
+  @include mixins.flex-center;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1000px;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0;
+
+  @include mixins.tablet {
+    font-size: 4rem;
+  }
+
+  @include mixins.desktop {
+    font-size: 4.5rem;
+  }
+}
+
+.hero__name {
+  background: linear-gradient(
+    135deg,
+    variables.$name-gradient-start 0%,
+    variables.$name-gradient-end 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.hero__subtitle {
+  font-size: 2.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0;
+
+  @include mixins.tablet {
+    font-size: 3.5rem;
+  }
+
+  @include mixins.desktop {
+    font-size: 4rem;
+  }
+}
+
+.hero__description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: variables.$text-secondary;
+  max-width: 600px;
+
+  @include mixins.tablet {
+    font-size: 1.25rem;
+  }
+
+  br {
+    @include mixins.mobile {
+      display: none;
+    }
+  }
+}
+
+.hero__actions {
+  @include mixins.flex-center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  @include mixins.mobile {
+    flex-direction: column;
+    width: 100%;
+
+    .btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,280 @@
+// ==========================================================================
+// Works Section - Landing Page
+// ==========================================================================
+@use "variables";
+@use "mixins";
+
+.works-section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin-bottom: 4rem;
+  text-align: center;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 3px;
+    background-color: variables.$accent-lime;
+
+    @include mixins.mobile {
+      width: 60px;
+      height: 2px;
+    }
+  }
+
+  @include mixins.mobile {
+    font-size: 1.5rem;
+    gap: 1rem;
+  }
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include mixins.mobile {
+    // grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @include mixins.tablet {
+    gap: 1.5rem;
+  }
+}
+
+.project-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  min-height: 320px;
+  border: 2px solid;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  // Decorative background arc/circle
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -250px;
+    right: 360px;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @include mixins.mobile {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    min-height: 280px;
+  }
+
+  @include mixins.tablet {
+    padding: 2.5rem;
+    min-height: 300px;
+  }
+}
+
+.project-card__content {
+  flex: 1;
+  z-index: 2;
+  position: relative;
+  max-width: 50%;
+
+  @include mixins.mobile {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.project-card__title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: variables.$text-primary;
+  line-height: 1.2;
+
+  @include mixins.mobile {
+    font-size: 2rem;
+  }
+
+  @include mixins.tablet {
+    font-size: 2.2rem;
+  }
+}
+
+.project-card__description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: variables.$text-secondary;
+  max-width: 280px;
+
+  @include mixins.mobile {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
+
+.project-card__image {
+  flex: 1;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  @include mixins.mobile {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.project-card__link {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: white;
+  @include mixins.flex-center;
+  transition: all 0.2s ease;
+  z-index: 3;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Card Color Variants
+.project-card--flyfundz {
+  background: linear-gradient(135deg, #004164 0%, #004164 100%);
+  border-color: variables.$card-border-flyfundz;
+
+  &::before {
+    background: linear-gradient(
+      135deg,
+      variables.$card-border-flyfundz,
+      #18668f
+    );
+  }
+}
+
+.project-card--estudy {
+  background: linear-gradient(135deg, #20442b 0%, #20442b 100%);
+  border-color: variables.$card-border-estudy;
+
+  &::before {
+    background: linear-gradient(135deg, variables.$card-border-estudy, #32824a);
+  }
+}
+
+.project-card--waste-wise {
+  background: linear-gradient(135deg, #1a1e4a 0%, #1a1e4a 100%);
+  border-color: variables.$card-border-waste-wise;
+
+  &::before {
+    background: linear-gradient(
+      135deg,
+      variables.$card-border-waste-wise,
+      rgba(167, 139, 250, 0.3)
+    );
+  }
+}
+
+.project-card--ecommerce {
+  background: linear-gradient(135deg, #3a2533 0%, #3a2533 100%);
+  border-color: variables.$card-border-ecommerce;
+
+  &::before {
+    background: linear-gradient(
+      135deg,
+      variables.$card-border-ecommerce,
+      #473140
+    );
+  }
+}
+
+// CTA Section
+.works-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.btn--cta {
+  background-color: variables.$accent-lime;
+  color: variables.$dark-text;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+
+  svg {
+    transition: transform 0.2s ease-in-out;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: #a3e635;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(190, 242, 100, 0.3);
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  @include mixins.mobile {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}

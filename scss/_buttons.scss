@@ -1,0 +1,57 @@
+// ==========================================================================
+// Buttons - Landing Page
+// ==========================================================================
+@use "variables";
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  font-family: variables.$font-primary;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all variables.$transition-fast;
+  user-select: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn--primary {
+  background: variables.$btn-primary-bg;
+  color: variables.$btn-primary-text;
+
+  &:hover:not(:disabled) {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  color: variables.$text-primary;
+  border: 1px solid variables.$text-primary;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 0 20px rgba(variables.$accent-green, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
