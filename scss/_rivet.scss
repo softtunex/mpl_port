@@ -1,0 +1,488 @@
+// ==========================================================================
+// Rivet Project Detail Page - Complete Fresh Rebuild
+// ==========================================================================
+@use "variables";
+@use "mixins";
+
+// Rivet-specific background
+.project-rivet {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+      url("https://res.cloudinary.com/duwdwr0r9/image/upload/v1757810857/Pattern_ulwsnd.png"),
+      radial-gradient(
+        circle at 100% 0%,
+        rgb(20, 184, 80) 0%,
+        rgba(26, 35, 50, 0) 30%
+      );
+    background-repeat: no-repeat;
+    background-position:
+      center center,
+      top right;
+    background-size:
+      auto,
+      800px 600px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// Main container
+.rivet-project {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+// Back button
+.rivet-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: variables.$text-secondary;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: variables.$text-primary;
+    transform: translateX(-4px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Hero section
+.rivet-hero {
+  padding: 4rem 0;
+  text-align: left;
+
+  @include mixins.mobile {
+    padding: 2rem 0;
+  }
+}
+
+.rivet-hero__content {
+  margin-bottom: 4rem;
+}
+
+.rivet-hero__title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+
+  @include mixins.mobile {
+    font-size: 1.5rem;
+  }
+}
+
+.rivet-hero__description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: variables.$text-secondary;
+  max-width: 500px;
+}
+
+.rivet-hero__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &:empty {
+    &::before {
+      content: "Hero Image - Phone with Landscape";
+      color: variables.$text-secondary;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  @include mixins.mobile {
+    min-height: 350px;
+  }
+}
+
+// Project timeline section
+.rivet-project-section {
+  padding: 6rem 0;
+  text-align: center;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+}
+
+.rivet-section-subtitle {
+  font-size: 1.5rem;
+  color: variables.$text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4rem;
+  display: block;
+}
+
+.rivet-section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+  @include mixins.mobile {
+    font-size: 2rem;
+  }
+}
+
+.rivet-section-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: variables.$text-secondary;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  display: block;
+
+  @include mixins.mobile {
+    margin-bottom: 3rem;
+  }
+}
+
+// Two image grid
+.rivet-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.rivet-image-placeholder {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(190, 242, 100, 0.3);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  &:empty::before {
+    content: "Image Placeholder";
+    color: variables.$text-secondary;
+    font-size: 0.9rem;
+  }
+
+  @include mixins.mobile {
+    min-height: 250px;
+  }
+}
+
+// Strategy cards section
+.rivet-cards-section {
+  padding: 6rem 0;
+  position: relative;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+}
+
+.rivet-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.rivet-cards-text {
+  max-width: 400px;
+  align-self: flex-start;
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: variables.$text-secondary;
+    margin: 0;
+  }
+}
+
+.rivet-cards-grid {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end;
+  width: 100%;
+
+  @include mixins.mobile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}
+
+.rivet-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  flex: 1;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(190, 242, 100, 0.3);
+  }
+
+  &--strategy {
+    min-height: 226px;
+  }
+
+  &--discovery {
+    min-height: 360px;
+  }
+
+  &--solutions {
+    min-height: 524px;
+    background: variables.$accent-lime;
+    color: variables.$dark-text;
+
+    .rivet-card__title,
+    .rivet-card__duration,
+    .rivet-card__description {
+      color: variables.$dark-text;
+    }
+
+    .rivet-tag--primary {
+      background: rgba(0, 0, 0, 0.15);
+      color: variables.$dark-text;
+    }
+  }
+
+  @include mixins.mobile {
+    min-height: auto !important;
+    flex: none;
+  }
+}
+
+.rivet-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin-bottom: 0.5rem;
+}
+
+.rivet-card__duration {
+  font-size: 0.9rem;
+  color: variables.$text-secondary;
+  margin-bottom: 1rem;
+}
+
+.rivet-card__description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: variables.$text-secondary;
+  margin-bottom: 1.5rem;
+}
+
+.rivet-card__tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.rivet-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  &--primary {
+    background: variables.$accent-lime;
+    color: variables.$dark-text;
+  }
+
+  &--secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: variables.$text-secondary;
+  }
+}
+
+// Phone section - Complete image including background
+.rivet-phone-section {
+  padding: 6rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+}
+
+.rivet-phone-image {
+  width: 100%;
+  max-width: 800px;
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba(190, 242, 100, 0.3);
+    transform: translateY(-4px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  // Fixed placeholder display
+  &:empty {
+    &::before {
+      content: "Complete Image - Phone with Stone Background";
+      color: variables.$text-secondary;
+      font-size: 1rem;
+      text-align: center;
+      padding: 2rem;
+    }
+  }
+
+  @include mixins.mobile {
+    min-height: 350px;
+    max-width: 100%;
+  }
+}
+
+// Typography section - Fixed alphabet alignment
+.rivet-typography {
+  padding: 8rem 0;
+
+  @include mixins.mobile {
+    padding: 6rem 0;
+  }
+}
+
+.rivet-typography__title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin-bottom: 6rem;
+  text-align: left;
+
+  @include mixins.mobile {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+}
+
+.rivet-typography__weights {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  margin-bottom: 6rem;
+  font-size: 1.2rem;
+  color: variables.$text-primary;
+
+  @include mixins.mobile {
+    gap: 3rem;
+    margin-bottom: 4rem;
+    font-size: 1rem;
+  }
+}
+
+.rivet-typography__showcase {
+  max-width: 100%;
+  margin: 0 auto 8rem;
+  padding: 6rem 8rem;
+  border: 2px solid rgba(190, 242, 100, 0.4);
+  border-radius: 20px;
+  background: transparent;
+  text-align: center;
+
+  @include mixins.mobile {
+    padding: 4rem 2rem;
+    margin-bottom: 6rem;
+  }
+}
+
+.rivet-typography__font-name {
+  font-size: 5rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  line-height: 1.1;
+
+  @include mixins.mobile {
+    font-size: 3rem;
+  }
+}
+
+.rivet-typography__alphabet {
+  font-size: 1rem;
+  color: variables.$text-secondary;
+  letter-spacing: 0.15em;
+  line-height: 2;
+  text-align: right;
+  max-width: 100%;
+  margin: 0;
+
+  @include mixins.mobile {
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+}

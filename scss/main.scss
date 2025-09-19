@@ -13,8 +13,7 @@
 @use "works";
 @use "services";
 @use "about";
-
-// Base styles
+@use "rivet"; // Base styles
 * {
   margin: 0;
   padding: 0;
