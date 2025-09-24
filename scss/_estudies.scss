@@ -1,0 +1,577 @@
+// ==========================================================================
+// Estudies Project Detail Page
+// ==========================================================================
+@use "variables";
+@use "mixins";
+
+// Estudies-specific background
+.project-estudies {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+      url("https://res.cloudinary.com/duwdwr0r9/image/upload/v1757810857/Pattern_ulwsnd.png"),
+      radial-gradient(
+        circle at 100% 0%,
+        rgb(20, 184, 80) 0%,
+        rgba(26, 35, 50, 0) 30%
+      );
+    background-repeat: no-repeat;
+    background-position:
+      center center,
+      top right;
+    background-size:
+      auto,
+      800px 600px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// Main container
+.estudies-project {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+// Back button
+.estudies-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: variables.$text-secondary;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: variables.$text-primary;
+    transform: translateX(-4px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Section styling utilities for Estudies
+.estudies-section-subtitle {
+  font-size: 0.9rem;
+  color: variables.$text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  display: block;
+
+  @include mixins.mobile {
+    font-size: 0.8rem;
+  }
+}
+
+.estudies-section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-align: left;
+
+  @include mixins.mobile {
+    font-size: 2rem;
+  }
+}
+
+.estudies-section-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: variables.$text-secondary;
+  max-width: 800px;
+  margin-bottom: 4rem;
+  text-align: left;
+
+  @include mixins.mobile {
+    margin-bottom: 3rem;
+  }
+}
+
+// Common section spacing
+.estudies-section {
+  padding: 4rem 0;
+
+  @include mixins.mobile {
+    padding: 1rem 0;
+  }
+}
+
+// Image containers
+.estudies-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+}
+
+// Hero section
+.estudies-hero {
+  padding: 4rem 0 6rem;
+
+  @include mixins.mobile {
+    padding: 2rem 0 4rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: variables.$text-primary;
+    line-height: 1.1;
+    max-width: 600px;
+
+    @include mixins.mobile {
+      font-size: 2rem;
+    }
+  }
+
+  &__btn {
+    background: variables.$accent-lime;
+    color: variables.$dark-text;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background: #a3e635;
+      transform: translateY(-2px);
+    }
+
+    @include mixins.mobile {
+      align-self: flex-start;
+    }
+  }
+
+  &__mockup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+    // padding: 3rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      padding: 2rem;
+    }
+  }
+}
+
+// Laptop showcase section
+.estudies-laptop-showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+
+  @include mixins.mobile {
+    margin: 3rem 0;
+  }
+}
+
+// UI Design Solution Section
+.estudies-ui-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 2rem;
+
+  @include mixins.mobile {
+    margin-bottom: 3rem;
+    gap: 1rem;
+  }
+}
+
+.estudies-ui-divider {
+  flex: 1;
+  height: 2px;
+  background: variables.$accent-lime;
+
+  @include mixins.mobile {
+    height: 1px;
+  }
+}
+
+.estudies-ui-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  white-space: nowrap;
+
+  @include mixins.mobile {
+    font-size: 1.5rem;
+  }
+}
+
+// UI Design grid (2x2 for first section)
+.estudies-ui-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.estudies-ui-item {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+}
+
+// Single image container for middle sections
+.estudies-single-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+}
+
+// Mobile grid (4 images for last section)
+.estudies-mobile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  @include mixins.mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.estudies-mobile-item {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+}
+
+// Mobile CTA section
+.estudies-mobile-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+
+  @include mixins.mobile {
+    margin-top: 2rem;
+  }
+}
+
+.estudies-live-project-btn {
+  background: variables.$accent-lime;
+  color: variables.$dark-text;
+  padding: 1rem 3rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+
+  &:hover {
+    background: #a3e635;
+    transform: translateY(-2px);
+  }
+
+  @include mixins.mobile {
+    padding: 0.875rem 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+// Section title variations
+.estudies-section-title--center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Design process section
+.estudies-design-process {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+
+  @include mixins.mobile {
+    margin-top: 3rem;
+  }
+}
+
+// Laptop mockup section
+.estudies-laptop-mockup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+
+  @include mixins.mobile {
+    margin: 3rem 0;
+  }
+}
+
+// Research subsections
+.estudies-subsection-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin: 3rem 0 1.5rem;
+
+  @include mixins.mobile {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+  }
+}
+
+.estudies-research-question {
+  font-size: 1rem;
+  color: variables.$text-secondary;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.estudies-research-list {
+  color: variables.$text-secondary;
+  line-height: 1.6;
+  margin-left: 2rem;
+
+  li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+
+  @include mixins.mobile {
+    margin-left: 1rem;
+  }
+}
+
+// User Persona section
+.estudies-persona {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__image {
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include mixins.mobile {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &__basic {
+    width: 100%;
+  }
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  &__label {
+    font-weight: 500;
+    color: variables.$text-secondary;
+  }
+
+  &__value {
+    color: variables.$text-primary;
+    font-weight: 500;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__section {
+    h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: variables.$text-primary;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: variables.$text-secondary;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    ul {
+      color: variables.$text-secondary;
+      line-height: 1.6;
+      margin: 0;
+      padding-left: 1.5rem;
+
+      li {
+        margin-bottom: 0.75rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @include mixins.mobile {
+      h4 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

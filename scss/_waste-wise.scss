@@ -1,0 +1,1020 @@
+// ==========================================================================
+// Waste-Wise Project Detail Page - Complete Clean Version
+// ==========================================================================
+@use "variables";
+@use "mixins";
+
+// Waste-Wise-specific background
+.project-waste-wise {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+      url("https://res.cloudinary.com/duwdwr0r9/image/upload/v1757810857/Pattern_ulwsnd.png"),
+      radial-gradient(
+        circle at 100% 0%,
+        rgb(34, 197, 94) 0%,
+        rgba(26, 35, 50, 0) 30%
+      );
+    background-repeat: no-repeat;
+    background-position:
+      center center,
+      top right;
+    background-size:
+      auto,
+      800px 600px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// Main container
+.waste-wise-project {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+// Back button
+.waste-wise-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: variables.$text-secondary;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: variables.$text-primary;
+    transform: translateX(-4px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Hero section with large phone mockup
+.waste-wise-hero {
+  padding: 2rem 0 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mixins.mobile {
+    padding: 1rem 0 3rem;
+  }
+
+  &__mockup {
+    max-width: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+  }
+}
+
+// Project Overview Section
+.waste-wise-overview {
+  padding: 3rem 0;
+  text-align: left;
+
+  @include mixins.mobile {
+    padding: 2rem 0;
+  }
+
+  &__badge {
+    display: inline-block;
+    background: #22c55e;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0 25px 0 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+
+    @include mixins.mobile {
+      padding: 0.5rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: variables.$text-secondary;
+    max-width: 900px;
+    margin: 0;
+  }
+}
+
+// Project Details Section
+.waste-wise-details {
+  padding: 4rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__item {
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: variables.$text-primary;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: variables.$text-secondary;
+      margin: 0;
+    }
+  }
+
+  &__illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+}
+
+// Section with character illustrations
+.waste-wise-section {
+  padding: 4rem 0;
+
+  @include mixins.mobile {
+    padding: 3rem 0;
+  }
+}
+
+.waste-wise-section-header {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 3rem;
+  align-items: center;
+
+  &--reverse {
+    grid-template-columns: 1fr 150px;
+
+    .waste-wise-section-character {
+      order: 2;
+    }
+
+    .waste-wise-section-content {
+      order: 1;
+      text-align: right;
+    }
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+
+    &--reverse {
+      grid-template-columns: 1fr;
+
+      .waste-wise-section-character {
+        order: -1;
+      }
+
+      .waste-wise-section-content {
+        order: 1;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.waste-wise-section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.waste-wise-section-badge {
+  background: #22c55e;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0 25px 0 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  width: fit-content;
+
+  &--center {
+    display: block;
+    text-align: center;
+    margin: 0 auto 3rem;
+    width: fit-content;
+  }
+
+  @include mixins.mobile {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    margin: 0 auto;
+  }
+}
+
+.waste-wise-section-character {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  justify-self: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @include mixins.mobile {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.waste-wise-section-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: variables.$text-secondary;
+  margin: 0;
+}
+
+// App Interface Section
+.waste-wise-interface {
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mixins.mobile {
+    padding: 3rem 0;
+  }
+
+  &__mockup {
+    max-width: 600px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+  }
+}
+
+// User Research Section
+.waste-wise-research {
+  padding: 4rem 0;
+  text-align: center;
+
+  @include mixins.mobile {
+    padding: 3rem 0;
+  }
+
+  &__intro {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: variables.$text-secondary;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  &__questions {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: variables.$text-primary;
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: variables.$text-secondary;
+
+        &:before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: #22c55e;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+// Design Process Section
+.waste-wise-process {
+  padding: 4rem 0;
+  text-align: center;
+
+  @include mixins.mobile {
+    padding: 3rem 0;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      margin-top: 2rem;
+    }
+  }
+}
+
+// User Persona Section
+.waste-wise-persona {
+  padding: 6rem 0;
+  text-align: center;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      margin-top: 2rem;
+    }
+  }
+}
+
+// Three Images Before Solution - Grid Layout
+.waste-wise-pre-solution {
+  padding: 4rem 0;
+
+  @include mixins.mobile {
+    padding: 3rem 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 600px;
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      height: auto;
+      gap: 1rem;
+    }
+  }
+
+  &__large {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      grid-column: 1;
+      grid-row: 1;
+      height: 300px;
+    }
+  }
+
+  &__small-top {
+    grid-column: 2;
+    grid-row: 1;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      grid-column: 1;
+      grid-row: 2;
+      height: 200px;
+    }
+  }
+
+  &__small-bottom {
+    grid-column: 2;
+    grid-row: 2;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      grid-column: 1;
+      grid-row: 3;
+      height: 200px;
+    }
+  }
+}
+
+// Solution Header Section
+.waste-wise-solution-header {
+  padding: 6rem 0 4rem;
+
+  @include mixins.mobile {
+    padding: 4rem 0 3rem;
+  }
+
+  &__title {
+    font-size: 6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6b7c1e 0%, #8b9518 50%, #a5a905 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 3rem 0;
+    line-height: 1.1;
+    opacity: 0.7;
+    text-align: center;
+
+    @include mixins.mobile {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__badge {
+    display: flex;
+    justify-content: flex-start;
+
+    @include mixins.mobile {
+      justify-content: center;
+    }
+
+    span {
+      background: #f59e0b;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+
+      @include mixins.mobile {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Home Page Features Section
+.waste-wise-home-features {
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include mixins.mobile {
+    padding: 3rem 0;
+  }
+
+  &__image {
+    max-width: 100%;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+  }
+}
+
+// Scan from Image Feature Section
+.waste-wise-scan-feature {
+  padding: 4rem 0;
+
+  @include mixins.mobile {
+    padding: 3rem 0;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: variables.$text-secondary;
+      max-width: 400px;
+      margin: 0;
+
+      @include mixins.mobile {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__mockups {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+
+    @include mixins.mobile {
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__phone {
+    max-width: 200px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      max-width: 180px;
+    }
+  }
+}
+
+// Schedule Pickup Section
+.waste-wise-schedule {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__badge {
+    margin-bottom: 3rem;
+
+    span {
+      background: #f59e0b;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+
+      @include mixins.mobile {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__text {
+    order: 2;
+
+    @include mixins.mobile {
+      order: 1;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: variables.$text-secondary;
+      max-width: 400px;
+      margin: 0;
+
+      @include mixins.mobile {
+        max-width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  &__mockup {
+    order: 1;
+    display: flex;
+    justify-content: center;
+
+    @include mixins.mobile {
+      order: 2;
+    }
+
+    img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+
+      @include mixins.mobile {
+        max-width: 250px;
+      }
+    }
+  }
+}
+
+// Tracking & Reward Section
+.waste-wise-tracking {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__badge {
+    margin-bottom: 3rem;
+    text-align: left;
+
+    @include mixins.mobile {
+      text-align: center;
+    }
+
+    span {
+      background: #f59e0b;
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+
+      @include mixins.mobile {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  &__layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    min-height: 500px;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 2rem;
+      min-height: auto;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    left: 280px;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 300px;
+    z-index: 2;
+
+    @include mixins.mobile {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      max-width: 100%;
+      text-align: center;
+      order: 1;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: variables.$text-secondary;
+      margin: 0;
+    }
+  }
+
+  &__mockups {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    justify-content: flex-end;
+
+    @include mixins.mobile {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      order: 2;
+    }
+  }
+
+  &__phone {
+    max-width: 180px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    &:nth-child(1) {
+      margin-top: 0;
+      margin-right: -20px;
+      z-index: 1;
+
+      @include mixins.mobile {
+        margin: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-top: 60px;
+      margin-right: -20px;
+      z-index: 2;
+
+      @include mixins.mobile {
+        margin: 0;
+      }
+    }
+
+    &:nth-child(3) {
+      margin-top: 120px;
+      z-index: 3;
+
+      @include mixins.mobile {
+        margin: 0;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      max-width: 150px;
+    }
+  }
+}
+
+// Other Screens Section
+.waste-wise-other-screens {
+  padding: 6rem 0;
+  text-align: center;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: variables.$text-primary;
+    margin-bottom: 3rem;
+
+    @include mixins.mobile {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  &__phone {
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 16px;
+
+      @include mixins.mobile {
+        max-width: 250px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+
+  &__login {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+
+    img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+
+      @include mixins.mobile {
+        max-width: 250px;
+      }
+    }
+  }
+}
+
+// Final Large Mockup Section
+.waste-wise-final-large {
+  padding: 6rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  border-radius: 24px;
+  margin: 4rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+    margin: 2rem 0;
+  }
+
+  &__mockup {
+    max-width: 600px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+  }
+}
