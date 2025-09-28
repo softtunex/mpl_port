@@ -3042,7 +3042,6 @@
 }
 
 .waste-wise-hero {
-  padding: 2rem 0 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3053,7 +3052,6 @@
   }
 }
 .waste-wise-hero__mockup {
-  max-width: 800px;
   border-radius: 20px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -3925,13 +3923,11 @@
 }
 
 .waste-wise-final-large {
-  padding: 6rem 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
   border-radius: 24px;
-  margin: 4rem 0;
 }
 @media (max-width: 767px) {
   .waste-wise-final-large {
@@ -3940,7 +3936,6 @@
   }
 }
 .waste-wise-final-large__mockup {
-  max-width: 600px;
   transition: all 0.3s ease;
 }
 .waste-wise-final-large__mockup:hover {

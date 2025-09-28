@@ -66,7 +66,7 @@
 
 // Hero section with large phone mockup
 .waste-wise-hero {
-  padding: 2rem 0 4rem;
+  // padding: 2rem 0 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,7 +76,7 @@
   }
 
   &__mockup {
-    max-width: 800px;
+    // max-width: 800px;
     border-radius: 20px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -989,13 +989,11 @@
 
 // Final Large Mockup Section
 .waste-wise-final-large {
-  padding: 6rem 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
   border-radius: 24px;
-  margin: 4rem 0;
 
   @include mixins.mobile {
     padding: 4rem 0;
@@ -1003,7 +1001,7 @@
   }
 
   &__mockup {
-    max-width: 600px;
+    // max-width: 600px;
     transition: all 0.3s ease;
 
     &:hover {
