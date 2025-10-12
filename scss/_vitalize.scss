@@ -1,0 +1,1076 @@
+// ==========================================================================
+// Vitalize Project Detail Page - Complete SCSS File
+// ==========================================================================
+@use "variables";
+@use "mixins";
+
+// Vitalize-specific background with purple gradient
+.project-vitalize {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image:
+      url("https://res.cloudinary.com/duwdwr0r9/image/upload/v1757810857/Pattern_ulwsnd.png"),
+      radial-gradient(
+        circle at 100% 0%,
+        rgb(124, 58, 237) 0%,
+        rgba(26, 35, 50, 0) 30%
+      );
+    background-repeat: no-repeat;
+    background-position:
+      center center,
+      top right;
+    background-size:
+      auto,
+      800px 600px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// Main container
+.vitalize-project {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+// Back button
+.vitalize-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: variables.$text-secondary;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: variables.$text-primary;
+    transform: translateX(-4px);
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// ==========================================================================
+// Hero Section
+// ==========================================================================
+.vitalize-hero {
+  padding: 4rem 0 6rem;
+
+  @include mixins.mobile {
+    padding: 2rem 0 4rem;
+  }
+
+  &__mockup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+}
+
+// ==========================================================================
+// Project Overview Section
+// ==========================================================================
+.vitalize-overview {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 600;
+    color: variables.$text-primary;
+    text-align: center;
+    margin-bottom: 4rem;
+
+    @include mixins.mobile {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+
+  &__text {
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: variables.$text-secondary;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  &__detail {
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: variables.$text-primary;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: variables.$text-secondary;
+      margin: 0;
+    }
+  }
+}
+
+// ==========================================================================
+// Challenge & Solutions Section
+// ==========================================================================
+.vitalize-challenge {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__intro {
+    flex: 1;
+    max-width: 600px;
+  }
+}
+
+.vitalize-section-badge {
+  display: inline-block;
+  background: #7c3aed;
+  color: white;
+  padding: 0.75rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+
+  @include mixins.mobile {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.vitalize-section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: variables.$text-primary;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+
+  @include mixins.mobile {
+    font-size: 2rem;
+  }
+}
+
+.vitalize-section-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: variables.$text-secondary;
+  margin: 0;
+}
+
+// Problems Grid
+.vitalize-problems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @include mixins.mobile {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.vitalize-problem-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @include mixins.mobile {
+    padding: 1.5rem;
+  }
+
+  &--highlighted {
+    background: #5f3ce3;
+    border-color: #5f3ce3;
+
+    h3 {
+      color: white;
+    }
+
+    .vitalize-problem-description {
+      color: white;
+    }
+
+    .vitalize-solution {
+      h4 {
+        color: #1a1a1a;
+      }
+    }
+
+    .vitalize-solution-icon {
+      svg {
+        color: #5f3ce3;
+      }
+    }
+
+    .vitalize-solution-title {
+      color: #1a1a1a;
+    }
+
+    .vitalize-solution-text p {
+      color: #4a5568;
+    }
+  }
+}
+
+.vitalize-problem-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+.vitalize-solution {
+  background: #f6f7f9;
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.vitalize-solution-content {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.vitalize-solution-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: #5f3ce3;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+  }
+}
+
+.vitalize-solution-text {
+  flex: 1;
+
+  .vitalize-solution-title {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #4a5568;
+    margin: 0;
+  }
+}
+
+// ==========================================================================
+// Laptop Showcase Section
+// ==========================================================================
+.vitalize-laptop-showcase {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+}
+
+// ==========================================================================
+// User Research Section - Vertical Layout
+// ==========================================================================
+.vitalize-research {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+    gap: 3rem;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__intro {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  &__logo {
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include mixins.mobile {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    // padding-right: 80px;
+
+    @include mixins.mobile {
+      gap: 1.5rem;
+      align-items: stretch;
+      // padding-right: 70px;
+    }
+  }
+
+  &__card {
+    background: #b3b0d7;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    @include mixins.mobile {
+      padding: 1.5rem;
+    }
+
+    &--primary {
+      width: 600px;
+      margin-right: 80px;
+      max-width: 100%;
+
+      @include mixins.mobile {
+        width: 100%;
+      }
+    }
+
+    &--secondary {
+      width: 680px;
+      max-width: 100%;
+
+      @include mixins.mobile {
+        width: 100%;
+      }
+    }
+
+    &--wide {
+      width: 1000px;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      grid-template-areas:
+        "label label"
+        "content image";
+
+      @include mixins.mobile {
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "label"
+          "image"
+          "content";
+      }
+    }
+  }
+
+  &__card-icon {
+    position: absolute;
+    right: -80px;
+    top: 15%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include mixins.mobile {
+      left: 40%;
+      right: 0;
+      top: -10px;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__card-content {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #4a5568;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0.5rem;
+          top: 0.6rem;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          border: 1.5px solid #1a1a1a;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__persona-label {
+    grid-area: label;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #1a1a1a;
+    margin-bottom: 0;
+  }
+
+  &__persona-content {
+    grid-area: content;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    @include mixins.mobile {
+      padding: 1.5rem;
+    }
+  }
+
+  &__persona-role {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+  }
+
+  &__persona-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #4a5568;
+    margin: 0;
+  }
+
+  &__persona-image {
+    grid-area: image;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 300px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include mixins.mobile {
+      min-height: 200px;
+    }
+  }
+
+  &__note {
+    max-width: 600px;
+    margin-left: 0;
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: variables.$text-secondary;
+      margin: 0;
+    }
+
+    @include mixins.mobile {
+      max-width: 100%;
+    }
+  }
+}
+
+// ==========================================================================
+// Dashboard Overview Section
+// ==========================================================================
+.vitalize-dashboard {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: variables.$text-primary;
+    line-height: 1.2;
+    margin: 1.5rem 0 3rem;
+    max-width: 700px;
+
+    @include mixins.mobile {
+      font-size: 2rem;
+    }
+  }
+
+  &__preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+}
+
+// ==========================================================================
+// Devices Showcase Section
+// ==========================================================================
+.vitalize-devices {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    @include mixins.mobile {
+      padding: 0;
+    }
+  }
+}
+
+// ==========================================================================
+// Connect Section
+// ==========================================================================
+.vitalize-connect {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+
+    @include mixins.mobile {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+
+  &__info {
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: variables.$text-primary;
+      line-height: 1.4;
+      margin-top: 1.5rem;
+    }
+
+    @include mixins.mobile {
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+// ==========================================================================
+// Onboarding Section
+// ==========================================================================
+.vitalize-onboarding {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__header {
+    margin-bottom: 4rem;
+    max-width: 600px;
+
+    @include mixins.mobile {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+  }
+
+  &__screens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @include mixins.mobile {
+      gap: 1.5rem;
+    }
+  }
+
+  &__screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    &--large {
+      max-width: 800px;
+      width: 100%;
+
+      @include mixins.mobile {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+}
+
+// ==========================================================================
+// Customer Health Scoring Section
+// ==========================================================================
+.vitalize-health-scoring {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__header {
+    margin-bottom: 4rem;
+    max-width: 1000px;
+
+    @include mixins.mobile {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+  }
+
+  &__screens {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @include mixins.mobile {
+      gap: 1.5rem;
+    }
+  }
+
+  &__screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    &--large {
+      max-width: 900px;
+      width: 100%;
+
+      @include mixins.mobile {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+}
+
+// ==========================================================================
+// Usage Analytics Section
+// ==========================================================================
+.vitalize-usage-analytics {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__header {
+    margin-bottom: 4rem;
+    max-width: 1000px;
+
+    @include mixins.mobile {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+}
+
+// ==========================================================================
+// Predictive AI Insights Section
+// ==========================================================================
+.vitalize-predictive-insights {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__header {
+    margin-bottom: 4rem;
+    max-width: 1000px;
+
+    @include mixins.mobile {
+      margin-bottom: 3rem;
+      max-width: 100%;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+}
+
+// ==========================================================================
+// Final Showcase Section
+// ==========================================================================
+.vitalize-final-showcase {
+  padding: 6rem 0;
+
+  @include mixins.mobile {
+    padding: 4rem 0;
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+  }
+}
