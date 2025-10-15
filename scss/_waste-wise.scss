@@ -586,9 +586,11 @@
   }
 
   &__image {
-    max-width: 100%;
+    max-width: 50%;
     transition: all 0.3s ease;
-
+    @include mixins.mobile {
+      max-width: 100%;
+    }
     &:hover {
       transform: translateY(-4px);
     }
@@ -710,7 +712,7 @@
   &__layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 1rem;
     align-items: center;
 
     @include mixins.mobile {
@@ -720,11 +722,11 @@
   }
 
   &__text {
-    order: 2;
+    order: 1;
 
-    @include mixins.mobile {
-      order: 1;
-    }
+    // @include mixins.mobile {
+    //   order: 1;
+    // }
 
     p {
       font-size: 1rem;
@@ -741,7 +743,7 @@
   }
 
   &__mockup {
-    order: 1;
+    order: 2;
     display: flex;
     justify-content: center;
 

@@ -3537,8 +3537,13 @@
   }
 }
 .waste-wise-home-features__image {
-  max-width: 100%;
+  max-width: 50%;
   transition: all 0.3s ease;
+}
+@media (max-width: 767px) {
+  .waste-wise-home-features__image {
+    max-width: 100%;
+  }
 }
 .waste-wise-home-features__image:hover {
   transform: translateY(-4px);
@@ -3654,7 +3659,7 @@
 .waste-wise-schedule__layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 1rem;
   align-items: center;
 }
 @media (max-width: 767px) {
@@ -3664,12 +3669,7 @@
   }
 }
 .waste-wise-schedule__text {
-  order: 2;
-}
-@media (max-width: 767px) {
-  .waste-wise-schedule__text {
-    order: 1;
-  }
+  order: 1;
 }
 .waste-wise-schedule__text p {
   font-size: 1rem;
@@ -3685,7 +3685,7 @@
   }
 }
 .waste-wise-schedule__mockup {
-  order: 1;
+  order: 2;
   display: flex;
   justify-content: center;
 }
