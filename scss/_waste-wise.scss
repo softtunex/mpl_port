@@ -773,23 +773,31 @@
 .waste-wise-tracking {
   padding: 6rem 0;
 
-  @include mixins.mobile {
-    padding: 4rem 0;
-  }
-
   &__content {
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  // The top block containing the text content
+  &__header {
+    margin-bottom: 0rem; // Creates space between the text and the images
+    width: 100%;
     position: relative;
+
+    p {
+      position: absolute;
+      top: 12rem;
+      left: 40%;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #9ca3af;
+      margin: 0;
+      max-width: 450px; // Prevents text from being too wide
+    }
   }
 
   &__badge {
-    margin-bottom: 3rem;
-    text-align: left;
-
-    @include mixins.mobile {
-      text-align: center;
-    }
+    margin-bottom: 1.5rem;
 
     span {
       background: #f59e0b;
@@ -799,114 +807,84 @@
       font-weight: 600;
       font-size: 1rem;
       display: inline-block;
-
-      @include mixins.mobile {
-        padding: 0.5rem 1.5rem;
-        font-size: 0.9rem;
-      }
     }
   }
 
-  &__layout {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    min-height: 500px;
-
-    @include mixins.mobile {
-      flex-direction: column;
-      gap: 2rem;
-      min-height: auto;
-    }
-  }
-
-  &__text {
-    position: absolute;
-    left: 280px;
-    top: 50%;
-    transform: translateY(-50%);
-    max-width: 300px;
-    z-index: 2;
-
-    @include mixins.mobile {
-      position: relative;
-      left: auto;
-      top: auto;
-      transform: none;
-      max-width: 100%;
-      text-align: center;
-      order: 1;
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: variables.$text-secondary;
-      margin: 0;
-    }
-  }
-
+  // The bottom block for the phone images
   &__mockups {
     display: flex;
-    align-items: flex-start;
-    position: relative;
-    width: 100%;
-    justify-content: flex-end;
-
-    @include mixins.mobile {
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      order: 2;
-    }
+    justify-content: center; // Horizontally centers the group of phones
+    align-items: center; // Aligns phones to their top for consistent transforms
   }
 
   &__phone {
-    max-width: 180px;
-    transition: all 0.3s ease;
+    max-width: 380px;
+    transition: transform 0.3s ease;
 
     &:hover {
-      transform: translateY(-4px);
+      transform: translateY(-10px) scale(1.03);
+      z-index: 10;
     }
+
+    // The "staircase down" effect
 
     &:nth-child(1) {
-      margin-top: 0;
-      margin-right: -20px;
-      z-index: 1;
-
-      @include mixins.mobile {
-        margin: 0;
-      }
+      // transform: translateY(60px);
+      margin-bottom: 150px;
     }
-
     &:nth-child(2) {
-      margin-top: 60px;
-      margin-right: -20px;
-      z-index: 2;
-
-      @include mixins.mobile {
-        margin: 0;
-      }
+      // transform: translateY(60px);
+      margin-top: 150px;
     }
 
     &:nth-child(3) {
-      margin-top: 120px;
-      z-index: 3;
-
-      @include mixins.mobile {
-        margin: 0;
-      }
+      // transform: translateY(120px);
+      margin-top: 350px;
     }
 
     img {
       width: 100%;
       height: auto;
-      border-radius: 16px;
+      border-radius: 28px;
+      display: block;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+// Mobile Styles
+@media (max-width: 768px) {
+  .waste-wise-tracking {
+    padding: 4rem 0;
+
+    &__header {
+      text-align: center; // Center the text content on mobile
+      margin-bottom: 3rem;
+
+      p {
+        max-width: 100%; // Allow text to use full width
+        padding: 0 1rem;
+        position: initial;
+      }
     }
 
-    @include mixins.mobile {
-      max-width: 150px;
+    &__mockups {
+      // Flexbox scaling will handle most of the responsiveness
+      flex-direction: column;
+    }
+
+    &__phone {
+      max-width: 100%; // Make phones much smaller
+
+      &:nth-child(1) {
+        margin-bottom: 0;
+      }
+      &:nth-child(2) {
+        margin-top: 0;
+      }
+      &:nth-child(3) {
+        margin-top: 0;
+      }
     }
   }
 }
