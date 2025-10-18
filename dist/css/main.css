@@ -2100,7 +2100,7 @@
 
 .rivet-features-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 4rem;
   align-items: center;
   margin-bottom: 4rem;
@@ -2165,7 +2165,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  max-width: 800px;
   margin: 0 auto;
 }
 @media (max-width: 767px) {
@@ -2173,6 +2172,12 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+}
+.rivet-features-phones:nth-child(2) {
+  margin-top: 5rem;
+}
+.rivet-features-phones:nth-child(3) {
+  margin-top: 0;
 }
 
 .rivet-features-phone-item {

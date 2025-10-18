@@ -994,7 +994,7 @@
 
 .rivet-features-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 4rem;
   align-items: center;
   margin-bottom: 4rem;
@@ -1059,12 +1059,19 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  max-width: 800px;
+  // max-width: 800px;
   margin: 0 auto;
 
   @include mixins.mobile {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  &:nth-child(2) {
+    margin-top: 5rem;
+  }
+  &:nth-child(3) {
+    margin-top: 0;
   }
 }
 
