@@ -1,0 +1,932 @@
+// ==========================================================================
+// Homepage styles — built from Figma "My Portfolio" › Desktop - 30 (1440px frame)
+// Compiled to dist/css/home.css. Case-study pages keep using main.scss.
+// ==========================================================================
+
+// Tokens (from Figma)
+@use "site" as *;
+
+// Background decoration --------------------------------------------------------
+.home-bg {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1800px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+
+  // Blurred mint ellipse that bleeds in from the left edge (Ellipse 2)
+  &__glow {
+    position: absolute;
+    left: -1311px;
+    top: 266px;
+    width: 1876px;
+    height: 1641px;
+    background: radial-gradient(
+      closest-side,
+      rgba(143, 251, 189, 0.6) 20%,
+      rgba(143, 251, 189, 0.24) 45%,
+      rgba(143, 251, 189, 0.05) 70%,
+      rgba(143, 251, 189, 0) 100%
+    );
+  }
+
+  // 1440px design frame, centred — pattern + stars are positioned inside it
+  &__frame {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(1440px, 100%);
+    height: 760px;
+    transform: translateX(-50%);
+  }
+
+  &__pattern {
+    position: absolute;
+    left: 4.51%;
+    top: 128px;
+    width: 91.67%;
+    height: auto;
+  }
+
+  &__star {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    animation: twinkle 3s ease-in-out infinite alternate;
+
+    &--1 {
+      left: 28.54%;
+      top: 224.5px;
+    }
+    &--2 {
+      left: 76.94%;
+      top: 285px;
+      animation-delay: -1s;
+    }
+    &--3 {
+      left: 85.07%;
+      top: 495px;
+      animation-delay: -2s;
+    }
+    &--4 {
+      left: 9.44%;
+      top: 564px;
+      animation-delay: -0.5s;
+    }
+
+    @include below(767px) {
+      width: 18px;
+      height: 18px;
+
+      &--1 {
+        left: 8%;
+        top: 150px;
+      }
+      &--2 {
+        left: 86%;
+        top: 190px;
+      }
+      &--3 {
+        left: 88%;
+        top: 330px;
+      }
+      &--4 {
+        display: none; // would sit on top of the intro text at this width
+      }
+    }
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .home-bg__star {
+    animation: none;
+  }
+}
+
+// Hero ------------------------------------------------------------------------
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 180px $gutter 0;
+  text-align: center;
+
+  @include below(767px) {
+    padding-top: 128px;
+  }
+}
+
+.hero__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero__avatar {
+  position: relative;
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: $white;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 0.46px);
+    width: 158px;
+    max-width: none;
+    height: 155.3px;
+    object-fit: cover;
+    transform: translateX(-50%);
+  }
+
+  @include below(767px) {
+    width: 120px;
+    height: 120px;
+
+    img {
+      width: 122px;
+      height: 120px;
+    }
+  }
+}
+
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 210px;
+  height: 33px;
+  border-radius: 24px;
+  background: $badge-bg;
+  font: 400 12px/normal $font-inter;
+  letter-spacing: 0.24px;
+}
+
+.hero__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $status;
+}
+
+.hero__title {
+  max-width: 766px;
+  margin-top: 24px;
+  font: 400 clamp(34px, 4.3vw + 0.4rem, 62px) / 1.21 $font-inter;
+  color: $white;
+}
+
+.hero__name {
+  background: linear-gradient(157.85deg, $name-start 71.8%, $name-end 95.5%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__description {
+  max-width: 600px;
+  margin-top: 12px;
+  font: 400 16px/24px $font-inter;
+  letter-spacing: 0.32px;
+  color: #d9d9d9;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 44px;
+
+  @include below(767px) {
+    margin-top: 32px;
+  }
+}
+
+// Section headings with yellow rules -------------------------------------------
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 1184px;
+  margin: 0 auto;
+  font: 600 clamp(24px, 1.6vw + 0.9rem, 32px) / 63.36px $font-inter;
+  text-align: center;
+  white-space: nowrap;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: $accent-line;
+  }
+
+  &--narrow {
+    max-width: 1036px;
+  }
+
+  @include below(480px) {
+    gap: 12px;
+    line-height: 1.6;
+  }
+}
+
+// Selected works ----------------------------------------------------------------
+.works {
+  padding-top: clamp(80px, 9vw, 131px);
+
+  .section-heading {
+    // Figma frame is 1184 wide inside a 1199 column, offset 6.5px
+    margin-bottom: clamp(32px, 4vw, 50px);
+  }
+}
+
+.works__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include below(767px) {
+    gap: 20px;
+  }
+}
+
+// Each card = text header + a 1199×640 artwork frame. The frame is pulled up by
+// the header's design height (--s) so on desktop it sits exactly like the Figma;
+// on narrow screens the header grows and the art slides down instead of
+// overlapping the copy.
+.work-card {
+  --s: 193;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  color: $white;
+
+  &__header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 58px 89px 0 57px;
+
+    @include below(1100px) {
+      padding: 40px 40px 0;
+    }
+
+    @include below(767px) {
+      flex-direction: column;
+      gap: 16px;
+      padding: 28px 20px 0;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 543px;
+  }
+
+  &__title {
+    font: 700 clamp(24px, 1.6vw + 0.75rem, 32px) / 1.22 $font-dm;
+  }
+
+  &__category {
+    font: 500 16px/24px $font-dm;
+  }
+
+  &__description {
+    max-width: 526px;
+    font: 500 16px/24px $font-inter;
+
+    @include below(767px) {
+      font-size: 15px;
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 4px;
+    flex-shrink: 0;
+    font: 600 clamp(18px, 1vw + 0.75rem, 24px) / 29px $font-inter;
+    color: #fcfcfd;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+    white-space: nowrap;
+
+    img {
+      width: 36px;
+      height: 36px;
+      transition: transform 150ms ease;
+
+      @include below(767px) {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    &:hover img {
+      transform: translate(3px, -3px);
+    }
+  }
+
+  &__art {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    aspect-ratio: 1199 / 640;
+    margin-top: calc(var(--s) / 1199 * -100%);
+    pointer-events: none;
+  }
+
+  &__layer {
+    position: absolute;
+    height: auto;
+    max-width: none;
+  }
+
+  // MyStore Nigeria ----------------------------------------------------------
+  &--mystore {
+    background: #0d283e;
+  }
+
+  // Flo Finance -------------------------------------------------------------
+  &--flo {
+    --s: 185;
+    background: #d8e8f7;
+    color: $card-text;
+
+    .work-card__header {
+      padding: 50px 62px 0 64px;
+    }
+
+    .work-card__text {
+      max-width: 526px;
+    }
+
+    .work-card__link {
+      font-family: $font-dm;
+      color: $card-text;
+    }
+  }
+
+  // Fortune Initiative --------------------------------------------------------
+  &--fortune {
+    --s: 209;
+    background: #b8e0d4;
+    color: $card-text;
+
+    .work-card__header {
+      padding: 50px 66px 0 64px;
+    }
+
+    .work-card__text {
+      max-width: 473px;
+    }
+
+    .work-card__description {
+      max-width: 447px;
+    }
+
+    .work-card__link {
+      color: $card-text;
+    }
+  }
+
+  &--flo,
+  &--fortune {
+    .work-card__header {
+      @include below(1100px) {
+        padding: 40px 40px 0;
+      }
+      @include below(767px) {
+        padding: 28px 20px 0;
+      }
+    }
+  }
+}
+
+// Artwork layers — positions are % of the 1199×640 Figma frame
+.mystore-watermark {
+  left: 4.754%;
+  top: 39.84%;
+  width: 75.98%;
+}
+.mystore-laptop {
+  left: 9.26%;
+  top: 44.375%;
+  width: 58.94%;
+}
+.mystore-phone {
+  left: 51.13%;
+  top: 33.91%;
+  width: 41.37%;
+}
+.flo-watermark {
+  opacity: 0.2;
+  left: 5.338%;
+  top: 37.34%;
+  width: 110.59%;
+}
+.flo-mockup {
+  left: 36.2%;
+  top: 30.94%;
+  width: 59.13%;
+}
+.fortune-watermark {
+  left: 32.78%;
+  top: 11.72%;
+  width: 61.3%;
+}
+.fortune-imac {
+  left: 11.26%;
+  top: 12.5%;
+  width: 65.39%;
+  aspect-ratio: 784 / 827;
+  object-fit: cover;
+}
+
+// Other live projects (horizontal scroller) ------------------------------------
+.projects {
+  padding-top: clamp(64px, 7vw, 102px);
+}
+
+.projects__title {
+  font: 600 clamp(24px, 1.6vw + 0.9rem, 32px) / normal $font-inter;
+}
+
+.projects__track {
+  --inset: max(#{$gutter}, calc((100% - #{$w-works}) / 2));
+  display: flex;
+  gap: 29px;
+  margin-top: 39px;
+  padding: 0 var(--inset) 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--inset);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  -webkit-overflow-scrolling: touch;
+
+  @include below(767px) {
+    gap: 16px;
+    margin-top: 24px;
+  }
+}
+
+.project-tile {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(530px, 82vw);
+  aspect-ratio: 530 / 443;
+  border-radius: 48px;
+  overflow: hidden;
+  scroll-snap-align: start;
+
+  @include below(767px) {
+    border-radius: 32px;
+  }
+
+  &--image {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:first-child {
+      width: min(526px, 82vw);
+      aspect-ratio: 526 / 443;
+      border-radius: 40px;
+
+      @include below(767px) {
+        border-radius: 28px;
+      }
+    }
+  }
+
+  // Older case studies, styled to sit in the same row
+  &--case {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 72px 28px 0;
+    text-decoration: none;
+    transition: transform 200ms ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: contain;
+      object-position: bottom center;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 34px;
+    left: 28px;
+    font: 700 17px/24.6px $font-dm;
+    color: #f2f2f2;
+  }
+
+  &--rivet {
+    background: linear-gradient(158deg, #0f2a44 15%, #020617 100%);
+  }
+  &--estudy {
+    background: linear-gradient(158deg, #2b3a52 15%, #1e293b 100%);
+  }
+  &--waste {
+    background: linear-gradient(158deg, #2e2a6b 15%, #1e1b4b 100%);
+  }
+  &--vitalyze {
+    background: linear-gradient(158deg, #6d32c4 15%, #4c1d95 100%);
+  }
+}
+
+// What I do ------------------------------------------------------------------------
+.skills {
+  padding-top: clamp(96px, 14vw, 221px);
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: 541fr 459fr;
+  column-gap: 72px;
+  row-gap: 24px;
+  max-width: 1087px;
+  margin-top: clamp(40px, 5vw, 76px);
+
+  @include below(900px) {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
+}
+
+.skill {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 80px;
+}
+
+// 80px ring: lime-to-black gradient border around a dark disc
+.skill__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(-42deg, $surface 49%, $lime 100%);
+  background-size: 160px 160px;
+  background-position: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    border-radius: 50%;
+    background: $surface;
+  }
+
+  @include below(480px) {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+// 32×35 glyph area at (24, 22.5) inside the ring; the img gets its Figma
+// left/top/width/height (in %) inline.
+.skill__glyph {
+  position: absolute;
+  left: 24px;
+  top: 22.5px;
+  width: 32px;
+  height: 35px;
+
+  img {
+    position: absolute;
+    max-width: none;
+  }
+
+  @include below(480px) {
+    left: 16px;
+    top: 14.5px;
+  }
+}
+
+.skill__title {
+  font: 600 16px/24px $font-inter;
+  letter-spacing: -0.64px;
+}
+
+.skill__text {
+  margin-top: 8px;
+  font: 400 16px/24px $font-inter;
+  letter-spacing: -0.64px;
+  color: $muted;
+}
+
+// Stats -------------------------------------------------------------------------
+.stats {
+  display: flex;
+  gap: 24px;
+  margin-top: clamp(64px, 8vw, 115px);
+
+  @include below(900px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.stat {
+  position: relative;
+  flex: 1 1 0;
+  height: 280px;
+  padding: 50px 49px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 14px;
+
+  @include below(900px) {
+    flex: none;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  @include below(420px) {
+    height: 240px;
+    padding: 36px 28px;
+  }
+
+  &__decor {
+    position: absolute;
+    left: 50%;
+    bottom: -110px;
+    width: 278px;
+    height: 278px;
+    transform: translateX(-50%);
+    // Figma mask: vertical fade, opaque at top → transparent at 65%
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 65%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 65%);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__number {
+    position: relative;
+    font: 400 78px/78px $font-inter;
+    letter-spacing: -3.12px;
+
+    @include below(420px) {
+      font-size: 64px;
+      line-height: 64px;
+    }
+  }
+
+  &__label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    font-weight: 600;
+  }
+
+  &__metric {
+    font-size: 16px;
+    line-height: 23.8px;
+    letter-spacing: -0.51px;
+  }
+
+  &__desc {
+    font-size: 24px;
+    line-height: 33.6px;
+    letter-spacing: -0.96px;
+    white-space: nowrap;
+  }
+
+  &--dark {
+    background: #1a1a1a;
+    border-color: #313131;
+    color: $white;
+
+    .stat__decor {
+      opacity: 0.07;
+    }
+    .stat__desc {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  &--green {
+    background: $lime;
+    color: $ink-soft;
+
+    .stat__decor {
+      opacity: 0.6;
+    }
+    .stat__desc {
+      color: rgba(47, 47, 47, 0.6);
+    }
+  }
+
+  &--light {
+    background: $white;
+    border-color: #e0e0e0;
+    color: $ink-soft;
+
+    .stat__decor {
+      opacity: 0.09;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 80%);
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 80%);
+    }
+    .stat__number {
+      font-family: $font-manrope;
+    }
+    .stat__desc {
+      color: rgba(47, 47, 47, 0.6);
+    }
+  }
+}
+
+// About + services --------------------------------------------------------------------
+.about {
+  padding-top: clamp(72px, 8vw, 111px);
+}
+
+.about .container--about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 75px;
+  align-items: start;
+
+  @include below(900px) {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+}
+
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.about__title {
+  font: 400 clamp(32px, 2vw + 1rem, 42px) / 1.2 $font-inter;
+  letter-spacing: -1.68px;
+}
+
+.about__text {
+  max-width: 485px;
+  margin-top: -6px; // 34px gap under the heading (40 - 6)
+  font: 400 16px/28px $font-inter;
+  letter-spacing: -0.64px;
+}
+
+.about__services-title {
+  font: 400 24px/33.6px $font-inter;
+  letter-spacing: -0.96px;
+}
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+// 2px lime-to-black gradient border, as in the Figma "Animated Border"
+.service {
+  padding: 2px;
+  border-radius: 18px;
+  background: linear-gradient(20deg, $surface 49%, $lime 100%);
+  background-size: calc(100% + 320px) calc(100% + 320px);
+  background-position: center;
+}
+
+.service__inner {
+  min-height: 152px;
+  padding: 24px;
+  border-radius: 16px;
+  background: $surface;
+}
+
+.service__name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 400 16px/24px $font-inter;
+  letter-spacing: -0.64px;
+}
+
+.service__dot {
+  font: 700 16px/24px $font-manrope;
+  color: $lime;
+}
+
+.service__features {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 24px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font: 400 16px/normal $font-inter;
+    letter-spacing: -0.64px;
+    color: $muted-2;
+
+    @include below(400px) {
+      font-size: 15px;
+    }
+  }
+}
+
+// 18px icon frame; the img gets its Figma position (in %) inline.
+.service__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+
+  img {
+    position: absolute;
+    max-width: none;
+  }
+}
+
+// Contact CTA ----------------------------------------------------------------------
+.contact {
+  padding: 45px 0 145px;
+
+  @include below(767px) {
+    padding: 48px 0 80px;
+  }
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 127px;
+  padding: 24px 47.5px;
+  border-radius: 24px;
+  background: linear-gradient(147.49deg, #c6fca6 0.38%, rgba(167, 252, 238, 0.74) 98.77%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  color: #151e28;
+
+  @include below(767px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+  }
+}
+
+.cta__title {
+  font: 600 clamp(20px, 1vw + 0.85rem, 24px) / 1.5 $font-inter;
+}
+
+.cta__sub {
+  margin-top: 4px;
+  font: 500 14px/1.4 $font-inter;
+}
