@@ -283,6 +283,7 @@ body.case-study {
     right: 0;
     bottom: 0;
     width: min(38.2vw, 550px);
+    height: auto; // keep the 550×643 aspect ratio when the width shrinks
 
     @include below(900px) {
       position: static;
